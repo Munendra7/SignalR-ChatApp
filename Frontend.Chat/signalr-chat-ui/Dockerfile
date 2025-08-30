@@ -9,6 +9,9 @@ RUN npm install
 # Copy the rest of the app source code
 COPY . .
 
+# Fix permissions for node_modules binaries
+RUN chmod +x node_modules/.bin/*
+
 # Pass the env vars from Docker into the build
 ARG VITE_CHATHUB_URL
 ENV VITE_CHATHUB_URL=${VITE_CHATHUB_URL}
